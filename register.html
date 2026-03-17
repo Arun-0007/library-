@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bookoholic- Student Registration</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
+            url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da') no-repeat center center/cover;
+        }
+
+        .container {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .card {
+            background: #111;
+            padding: 35px;
+            width: 420px;
+            border-radius: 15px;
+            box-shadow: 0 0 30px orange;
+        }
+
+        h2 {
+            text-align: center;
+            color: orange;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            background: #222;
+            border: 1px solid orange;
+            color: white;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            box-shadow: 0 0 8px orange;
+        }
+        .radio-group {
+    margin: 15px 0;
+    color: white;
+}
+
+.radio-options {
+    display: flex;
+    gap: 30px;
+    margin-top: 8px;
+}
+
+.radio-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.radio-item input[type="radio"] {
+    accent-color: orange;
+    width: 16px;
+    height: 16px;
+}
+
+        
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            background: orange;
+            border: none;
+            color: black;
+            font-weight: bold;
+            font-size: 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: darkorange;
+            transform: scale(1.03);
+        }
+
+        .success {
+            margin-top: 15px;
+            text-align: center;
+            color: lightgreen;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <h2>Bookphorbia Registration</h2>
+        <div class="register-box">
+
+
+
+<div class="admin-link">
+<p>Click here if you are Admin/Staff</p>
+
+<button class="admin-btn" onclick="window.location.href='index.html'">
+CLICK HERE IF YOU ARE A ADMIN /STAFF
+</button>
+</div>
+<h2>FOR STUDENT REGISTRATION</h2>
+
+        <input type="text" id="name" placeholder="Full Name" required>
+       <input type="tel" id="phone" placeholder="Phone Number"
+       maxlength="10"
+       pattern="[0-9]{10}"
+       oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+       required>
+
+            <div class="radio-group">
+    <label>Gender:</label>
+    <div class="radio-options">
+        <label class="radio-item">
+            <input type="radio" name="gender" value="Male">
+            <span>Male</span>
+        </label>
+
+        <label class="radio-item">
+            <input type="radio" name="gender" value="Female">
+            <span>Female</span>
+        </label>
+    </div>
+</div>
+
+        <input type="date" id="dob" required>
+
+        <select id="department">
+            <option value="">Select Department</option>
+            <option>CSE</option>
+            <option>IT</option>
+            <option>ECE</option>
+            <option>EEE</option>
+            <option>MECH</option>
+            <option>BIO</option>
+        </select>
+
+        <select id="year">
+            <option value="">Select Year</option>
+            <option>1st Year</option>
+            <option>2nd Year</option>
+            <option>3rd Year</option>
+            <option>4th Year</option>
+        </select>
+           <div class="radio-group">
+    <label>Are you a member of Bookphorbia?</label>
+    <div class="radio-options">
+        <label class="radio-item">
+            <input type="radio" name="member" value="Yes">
+            <span>Yes</span>
+        </label>
+
+        <label class="radio-item">
+            <input type="radio" name="member" value="No">
+            <span>No</span>
+        </label>
+    </div>
+</div>
+
+        
+       <button onclick="registerStudent()">Submit Registration</button>
+        <button onclick="window.location.href='og.html'">
+      ENTER
+      <button id="enterBtn" onclick="window.location.href='og.html'" style="display:none;">
+ENTER
+</button>
+</button>
+        <p id="thankyouMsg" style="color:rgb(202, 210, 44); font-weight:bold; display:none;">
+  THANK YOU!
+</p>
+
+
+        <div class="success" id="successMsg"></div>
+    </div>
+</div>
+
+<script>
+    function validateForm() {
+
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+
+    if (name === "" || email === "" || password === "") {
+        document.getElementById("message").innerHTML = "Please fill all details";
+        return false; // Stop form submission
+    } 
+    else {
+        document.getElementById("message").innerHTML = "Thank You for Registering!";
+        return false; // Prevent page refresh (optional)
+    }
+}
+
+function registerStudent(){
+
+let name = document.getElementById("name").value.trim();
+let mobile = document.getElementById("phone").value.trim();
+let dob = document.getElementById("dob").value;
+let department = document.getElementById("department").value;
+let year = document.getElementById("year").value;
+
+let gender = document.querySelector('input[name="gender"]:checked');
+let member = document.querySelector('input[name="member"]:checked');
+
+if(name === "" || mobile === "" || dob === "" || department === "" || year === "" || !gender || !member){
+
+alert("Please enter the details");
+return;
+
+}
+
+if(mobile.length !== 10){
+alert("Enter valid 10 digit mobile number");
+return;
+}
+
+let students = JSON.parse(localStorage.getItem("students")) || [];
+
+let newStudent = {
+name:name,
+mobile:mobile,
+gender:gender.value,
+dob:dob,
+department:department,
+year:year,
+member:member.value
+};
+
+students.push(newStudent);
+
+localStorage.setItem("students",JSON.stringify(students));
+
+document.getElementById("thankyouMsg").style.display="block";
+
+document.getElementById("enterBtn").style.display="block";
+
+}
+</script>
+
+</body>
+</html>

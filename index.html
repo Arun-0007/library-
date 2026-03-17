@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Bookoholic</title>
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f') no-repeat center center/cover;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.container{
+background:#111;
+padding:40px;
+width:380px;
+border-radius:15px;
+box-shadow:0 0 30px orange;
+text-align:center;
+}
+
+h2{
+color:orange;
+margin-bottom:20px;
+}
+
+input{
+width:100%;
+padding:12px;
+margin:8px 0;
+background:#222;
+border:1px solid orange;
+color:white;
+border-radius:8px;
+outline:none;
+}
+
+button{
+width:100%;
+padding:12px;
+background:orange;
+border:none;
+border-radius:8px;
+font-weight:bold;
+cursor:pointer;
+margin-top:10px;
+}
+
+button:hover{
+background:#ff8800;
+}
+
+.link{
+color:orange;
+display:block;
+margin-top:12px;
+cursor:pointer;
+font-size:14px;
+}
+
+.error{
+color:red;
+font-size:14px;
+}
+
+.hidden{
+display:none;
+}
+
+.success{
+color:lightgreen;
+font-size:14px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- LOGIN FORM -->
+<div id="loginBox">
+<h2>Bookoholic Login</h2>
+
+<input type="email" id="loginEmail" placeholder="Email" autocomplete="off">
+<input type="password" id="loginPassword" placeholder="Password" autocomplete="new-password">
+
+<button onclick="login()">Login</button>
+
+<div class="error" id="loginError"></div>
+
+<span class="link" onclick="showForgot()">Forgot Password?</span>
+<span class="link" onclick="showRegister()">Create Account</span>
+</div>
+
+
+<!-- REGISTER FORM -->
+<div id="registerBox" class="hidden">
+<h2>Create Account</h2>
+
+<input type="email" id="regEmail" placeholder="Enter Email">
+<input type="password" id="regPass" placeholder="Enter Password">
+<input type="password" id="regPass2" placeholder="Re-enter Password">
+<form autocomplete="off">
+
+
+</form>
+
+<button onclick="register()">Submit</button>
+
+<div class="error" id="regError"></div>
+<div class="success" id="regSuccess"></div>
+
+<span class="link" onclick="showLogin()">Back to Login</span>
+</div>
+
+
+<!-- FORGOT PASSWORD -->
+<div id="forgotBox" class="hidden">
+<h2>Reset Password</h2>
+
+<input type="email" id="forgotEmail" placeholder="Enter Email">
+<button onclick="sendOTP()">Send OTP</button>
+
+<div id="otpSection" class="hidden">
+<input type="text" id="otpInput" placeholder="Enter 6-digit OTP">
+<input type="password" id="newPassword" placeholder="New Password">
+<button onclick="verifyOTP()">Verify & Reset</button>
+</div>
+
+<div class="error" id="otpError"></div>
+<div class="success" id="otpSuccess"></div>
+
+<span class="link" onclick="showLogin()">Back to Login</span>
+</div>
+
+</div>
+
+<script>
+
+let generatedOTP = null;
+
+// Default User
+if(!localStorage.getItem("users")){
+localStorage.setItem("users", JSON.stringify([
+{ email:"test@example.com", password:"library@123" }
+]));
+}
+
+// Switch Forms
+function showRegister(){
+hideAll();
+document.getElementById("registerBox").classList.remove("hidden");
+}
+
+function showForgot(){
+hideAll();
+document.getElementById("forgotBox").classList.remove("hidden");
+}
+
+function showLogin(){
+hideAll();
+document.getElementById("loginBox").classList.remove("hidden");
+}
+
+function hideAll(){
+document.getElementById("loginBox").classList.add("hidden");
+document.getElementById("registerBox").classList.add("hidden");
+document.getElementById("forgotBox").classList.add("hidden");
+}
+
+
+// LOGIN
+function login(){
+
+let email = document.getElementById("loginEmail").value.trim();
+let password = document.getElementById("loginPassword").value.trim();
+let users = JSON.parse(localStorage.getItem("users"));
+
+// CHECK EMPTY FIELDS
+if(email === "" || password === ""){
+document.getElementById("loginError").innerText = "Please enter the details";
+return;
+}
+
+let user = users.find(u => u.email === email && u.password === password);
+
+if(user){
+alert("Login Successful!");
+window.location.href="og.html";
+}else{
+document.getElementById("loginError").innerText="Invalid Email or Password!";
+}
+
+}
+
+
+// REGISTER
+function register(){
+
+let email = document.getElementById("regEmail").value.trim();
+let pass = document.getElementById("regPass").value;
+let pass2 = document.getElementById("regPass2").value;
+let users = JSON.parse(localStorage.getItem("users"));
+
+if(pass !== pass2){
+document.getElementById("regError").innerText="Passwords do not match!";
+return;
+}
+
+if(users.find(u => u.email === email)){
+document.getElementById("regError").innerText="Email already registered!";
+return;
+}
+
+users.push({email:email,password:pass});
+localStorage.setItem("users", JSON.stringify(users));
+
+document.getElementById("regSuccess").innerText="Your new account is registered!";
+document.getElementById("regError").innerText="";
+
+setTimeout(showLogin,2000);
+}
+
+
+// SEND OTP
+function sendOTP(){
+
+let email = document.getElementById("forgotEmail").value.trim();
+let users = JSON.parse(localStorage.getItem("users"));
+
+let user = users.find(u => u.email === email);
+
+if(!user){
+document.getElementById("otpError").innerText="Email not registered!";
+return;
+}
+
+generatedOTP = Math.floor(100000 + Math.random() * 900000);
+
+alert("Demo OTP: " + generatedOTP);
+
+document.getElementById("otpSection").classList.remove("hidden");
+}
+
+
+// VERIFY OTP
+function verifyOTP(){
+
+let enteredOTP = document.getElementById("otpInput").value;
+let newPass = document.getElementById("newPassword").value;
+let email = document.getElementById("forgotEmail").value;
+let users = JSON.parse(localStorage.getItem("users"));
+
+if(enteredOTP == generatedOTP){
+
+users.forEach(u=>{
+if(u.email === email){
+u.password = newPass;
+}
+});
+
+localStorage.setItem("users", JSON.stringify(users));
+
+document.getElementById("otpSuccess").innerText="Password Reset Successful!";
+document.getElementById("otpError").innerText="";
+
+setTimeout(showLogin,2000);
+
+}else{
+document.getElementById("otpError").innerText="Invalid OTP!";
+}
+
+}
+
+</script>
+
+</body>
+</html>

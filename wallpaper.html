@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Library Welcome</title>
+
+<style>
+/* Remove default spacing */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: 'Georgia', serif;
+    overflow: hidden;
+}
+
+/* Background Image */
+.background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1507842217343-583bb7270b66') no-repeat center center/cover;
+}
+
+/* Dark overlay */
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 1s ease;
+}
+
+/* Quote Styling */
+.quote {
+    color: white;
+    font-size: 42px;
+    text-align: center;
+    letter-spacing: 3px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Fade-out class */
+.fade-out {
+    opacity: 0;
+}
+</style>
+
+</head>
+<body>
+
+<div class="background"></div>
+
+<div class="overlay" id="overlay">
+    <h1 class="quote">LEARN BOOKS -- GROW TOGETHER</h1>
+</div>
+
+<script>
+// Wait 3 seconds
+setTimeout(function() {
+    document.getElementById("overlay").classList.add("fade-out");
+    
+    // Redirect after fade animation
+    setTimeout(function() {
+        window.location.href = "register.html";  // Change this to your next page
+    }, 1000);
+
+}, 3000);
+</script>
+
+</body>
+</html>
+

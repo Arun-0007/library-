@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Library Rack System</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#111;
+color:white;
+display:flex;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+width:220px;
+background:black;
+padding:20px;
+height:100vh;
+border-right:3px solid orange;
+}
+
+.sidebar h2{
+color:orange;
+}
+
+.sidebar button{
+width:100%;
+padding:12px;
+margin:8px 0;
+background:#222;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+.sidebar button:hover{
+background:orange;
+color:black;
+}
+
+/* CONTENT */
+
+.content{
+flex:1;
+padding:30px;
+}
+
+h1{
+color:orange;
+}
+
+/* TABLE */
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+th{
+background:orange;
+color:black;
+padding:12px;
+}
+
+td{
+padding:12px;
+border-bottom:1px solid #333;
+}
+
+.rack{
+display:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<h2>Session</h2>
+
+<button onclick="showRack('rack1')">Rack 01</button>
+<button onclick="showRack('rack2')">Rack 02</button>
+<button onclick="showRack('rack3')">Rack 03</button>
+<button onclick="showRack('rack4')">Rack 04</button>
+<button onclick="showRack('rack1')">Rack 05</button>
+<button onclick="showRack('rack2')">Rack 06</button>
+<button onclick="showRack('rack3')">Rack 07</button>
+<button onclick="showRack('rack4')">Rack 08</button>
+<button onclick="showRack('rack3')">Rack 09</button>
+<button onclick="showRack('rack4')">Rack 10</button>
+<button onclick="showRack('rack1')">Rack 11</button>
+<button onclick="showRack('rack2')">Rack 12</button>
+<button onclick="showRack('rack3')">Rack 13</button>
+<button onclick="showRack('rack4')">Rack 14</button>
+
+</div>
+
+<!-- CONTENT -->
+
+<div class="content">
+
+<h1>Library Rack Books</h1>
+
+<!-- RACK 1 -->
+
+<div id="rack1" class="rack">
+
+<h2>Rack 01</h2>
+
+<table>
+
+<tr>
+<th>Call No</th>
+<th>Subject</th>
+<th>Section</th>
+</tr>
+
+<tr>
+<td>530</td>
+<td>Engineering Physics-II</td>
+<td>Section-A</td>
+</tr>
+
+<tr>
+<td>530</td>
+<td>Engineering Physics-II</td>
+<td>Section-B</td>
+</tr>
+
+<tr>
+<td>530</td>
+<td>Engineering Physics-II</td>
+<td>Section-C</td>
+</tr>
+
+<tr>
+<td>530</td>
+<td>Physics-II</td>
+<td>Section-D</td>
+</tr>
+
+<tr>
+<td>540</td>
+<td>Chemistry</td>
+<td>Section-E</td>
+</tr>
+
+</table>
+
+</div>
+
+<!-- RACK 2 -->
+
+<div id="rack2" class="rack">
+
+<h2>Rack 02</h2>
+
+<table>
+
+<tr>
+<th>Call No</th>
+<th>Subject</th>
+<th>Section</th>
+</tr>
+
+<tr>
+<td>510</td>
+<td>Engineering Mathematics</td>
+<td>Section-A</td>
+</tr>
+
+<tr>
+<td>510</td>
+<td>Engineering Mathematics</td>
+<td>Section-B</td>
+</tr>
+
+<tr>
+<td>510</td>
+<td>Engineering Mathematics</td>
+<td>Section-C</td>
+</tr>
+
+<tr>
+<td>510</td>
+<td>Engineering Mathematics</td>
+<td>Section-D</td>
+</tr>
+
+<tr>
+<td>420</td>
+<td>Technical English for Engineers</td>
+<td>Section-E</td>
+</tr>
+
+</table>
+
+</div>
+
+<!-- RACK 3 -->
+
+<div id="rack3" class="rack">
+
+<h2>Rack 03</h2>
+
+<table>
+
+<tr>
+<th>Call No</th>
+<th>Subject</th>
+<th>Section</th>
+</tr>
+
+<tr>
+<td>420</td>
+<td>English for Technologists</td>
+<td>Section-A</td>
+</tr>
+
+<tr>
+<td>420</td>
+<td>Technical English</td>
+<td>Section-B</td>
+</tr>
+
+<tr>
+<td>420</td>
+<td>English for Technologists</td>
+<td>Section-C</td>
+</tr>
+
+<tr>
+<td>470</td>
+<td>Technical Communication</td>
+<td>Section-D</td>
+</tr>
+
+<tr>
+<td>420</td>
+<td>Technical English</td>
+<td>Section-E</td>
+</tr>
+
+</table>
+
+</div>
+
+<!-- RACK 4 -->
+
+<div id="rack4" class="rack">
+
+<h2>Rack 04</h2>
+
+<table>
+
+<tr>
+<th>Call No</th>
+<th>Subject</th>
+<th>Section</th>
+</tr>
+
+<tr>
+<td>420</td>
+<td>Professional English</td>
+<td>Section-A</td>
+</tr>
+
+<tr>
+<td>420</td>
+<td>Professional English</td>
+<td>Section-B</td>
+</tr>
+
+<tr>
+<td>420</td>
+<td>Professional English</td>
+<td>Section-C</td>
+</tr>
+
+<tr>
+<td>420</td>
+<td>Professional English</td>
+<td>Section-D</td>
+</tr>
+
+<tr>
+<td>420</td>
+<td>Technical English for Engineers</td>
+<td>Section-E</td>
+</tr>
+
+</table>
+
+</div>
+
+</div>
+<!-- RACK 5 -->
+
+<div id="rack5" class="rack">
+
+<h2>Rack 05</h2>
+
+<table>
+
+<tr>
+<th>Call No</th>
+<th>Subject</th>
+<th>Section</th>
+</tr>
+
+<tr>
+<td>512.943.4</td>
+<td>MATRICS AND CALCULUS</td>
+<td>Section-A</td>
+</tr>
+
+<tr>
+<td>512.943.4</td>
+<td>MATRICS AND CALCULUS</td>
+<td>Section-B</td>
+</tr>
+
+<tr>
+<td>512.943 4</td>
+<td>MATRICS AND CALCULUS</td>
+<td>Section-C</td>
+</tr>
+
+<tr>
+<td>512.943.4</td>
+<td>MATRICS AND CALCULUS</td>
+<td>Section-D</td>
+</tr>
+
+<tr>
+<td>520</td>
+<td>ENGINEERING CHEMISTRY</td>
+<td>Section-E</td>
+</tr>
+
+</table>
+
+</div>
+<!-- RACK 6 -->
+
+<div id="rack6" class="rack">
+
+<h2>Rack 06</h2>
+
+<table>
+
+<tr>
+<th>Call No</th>
+<th>Subject</th>
+<th>Section</th>
+</tr>
+
+<tr>
+<td>540</td>
+<td>ENGINEERIMG CHEMISTRY</td>
+<td>Section-A</td>
+</tr>
+
+<tr>
+<td>540</td>
+<td>ENGINEERING CHEMISTRY</td>
+<td>Section-B</td>
+</tr>
+
+<tr>
+<td>540</td>
+<td>ENGINEERING CHEMISTRY</td>
+<td>Section-C</td>
+</tr>
+
+<tr>
+<td>512.943.4</td>
+<td>MATRICS AND CALCULUS</td>
+<td>Section-D</td>
+</tr>
+
+<tr>
+<td>512.943.4</td>
+<td>MATRUC AND CALCULUS</td>
+<td>Section-E</td>
+</tr>
+
+</table>
+<!-- RACK 7 -->
+
+<div id="rack7" class="rack">
+
+<h2>Rack 07</h2>
+
+<table>
+
+<tr>
+<th>Call No</th>
+<th>Subject</th>
+<th>Section</th>
+</tr>
+
+<tr>
+<td>530</td>
+<td>ENGINEERIMG PHYSICS II</td>
+<td>Section-A</td>
+</tr>
+
+<tr>
+<td>530</td>
+<td>ENGINEERING PHYSICS II</td>
+<td>Section-B</td>
+</tr>
+
+<tr>
+<td>530</td>
+<td>ENGINEERING PHYSICS II</td>
+<td>Section-C</td>
+</tr>
+
+<tr>
+<td>620.11</td>
+<td>MATERIALS AND SCIENCE</td>
+<td>Section-D</td>
+</tr>
+
+<tr>
+<td>620.11</td>
+<td>MATERIAL AND SCIENCE</td>
+<td>Section-E</td>
+</tr>
+
+</table>
+
+
+<!-- RACK 8 -->
+
+<div id="rack8" class="rack">
+
+<h2>Rack 08</h2>
+
+<table>
+
+<tr>
+<th>Call No</th>
+<th>Subject</th>
+<th>Section</th>
+</tr>
+
+<tr>
+<td>005.133</td>
+<td>PROBLEM SOLVING AND PYTHON PROGRAMMING</td>
+<td>Section-A</td>
+</tr>
+
+<tr>
+    <td>005.133</td>
+<td>PROBLEM SOLVING AND PYTHON PROGRAMMING</td>
+
+<td>Section-B</td>
+</tr>
+
+<tr>
+<td>005.133</td>
+<td>PROBLEM SOLVING AND PYTHON PROGRAMMING</td>
+<td>Section-C</td>
+</tr>
+
+<tr>
+<td>005.133</td>
+<td>PROBLEM SOLVING AND PYTHON PROGRAMMING</td>
+<td>Section-D</td>
+</tr>
+
+<tr>
+<td>510</td>
+<td>ENGINEERING MATHEMATICS</td>
+<td>Section-E</td>
+</tr>
+
+</table>
+<!-- RACK 8 -->
+
+<div id="rack8" class="rack">
+
+<h2>Rack 08</h2>
+
+<table>
+
+<tr>
+<th>Call No</th>
+<th>Subject</th>
+<th>Section</th>
+</tr>
+
+<tr>
+<td>700</td>
+<td>TAMILAR MARABU</td>
+<td>Section-A</td>
+</tr>
+
+<tr>
+<td>700</td>
+<td>TAMILAR MARABU</td>
+<td>Section-B</td>
+</tr>
+
+<tr>
+<td>621.4022</td>
+<td>HEAT AND MASS TRANSFER</td>
+<td>Section-C</td>
+</tr>
+
+<tr>
+<td>005.133</td>
+<td>PROGRAMMING WITH ANSIC</td>
+<td>Section-D</td>
+</tr>
+
+<tr>
+<td>005.133</td>
+<td>PROGRAMMING WITH ANSIC</td>
+<td>Section-E</td>
+</tr>
+
+</table>
+
+
+
+<script>
+
+function showRack(rackId){
+
+let racks=document.querySelectorAll(".rack");
+
+racks.forEach(function(r){
+r.style.display="none";
+});
+
+document.getElementById(rackId).style.display="block";
+
+}
+
+</script>
+
+</body>
+</html>
